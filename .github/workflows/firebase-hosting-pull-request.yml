@@ -8,6 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: SpicyPizza/create-envfile@v2.0.2
+        with:
+          envkey_DISCORD_CLIENT_ID: ${{ secrets.DEV_DISCORD_CLIENT_ID }}
+          envkey_DISCORD_CLIENT_SECRET: ${{ secrets.DEV_DISCORD_CLIENT_SECRET }}
+          envkey_DISCORD_SCOPES: ${{ secrets.DEV_DISCORD_SCOPES }}
+          envkey_NEXTAUTH_SECRET: ${{ secrets.DEV_NEXTAUTH_SECRET }}
+          envkey_NEXTAUTH_URL: ${{ secrets.DEV_NEXTAUTH_URL }}
+          file_name: .env
+          fail_on_empty: true
       - run: yarn install && yarn build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
