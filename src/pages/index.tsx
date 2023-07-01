@@ -8,6 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const { data: session, status } = useSession();
 
+  console.log(process.env.NEXT_PUBLIC_NEXTAUTH_URL);
+
   if (status === UserAuthStatus.Authenticated) {
     console.log(session);
   }
