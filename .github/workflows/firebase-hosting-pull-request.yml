@@ -17,7 +17,7 @@ jobs:
           envkey_NEXTAUTH_URL: ${{ vars.DEV_NEXTAUTH_URL }}
           file_name: .env
           fail_on_empty: true
-      - run: echo ${{ vars.DEV_NEXTAUTH_URL }}
+      - run: cat .env
       - run: yarn install && yarn build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
